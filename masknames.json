@@ -1,0 +1,66 @@
+{
+    "c2array": true,
+    "size": [
+        1,
+        18,
+        1
+    ],
+    "data": [
+        [
+            [
+                "Astronaut"
+            ],
+            [
+                "Bandana"
+            ],
+            [
+                "blueSurgical"
+            ],
+            [
+                "filter"
+            ],
+            [
+                "cloth with ties"
+            ],
+            [
+                "clown_nose"
+            ],
+            [
+                "football_helmet"
+            ],
+            [
+                "masquerade"
+            ],
+            [
+                "mustache_glasses"
+            ],
+            [
+                "n95"
+            ],
+            [
+                "no_mask"
+            ],
+            [
+                "pinkSurgical"
+            ],
+            [
+                "purple_cloth"
+            ],
+            [
+                "red_cloth"
+            ],
+            [
+                "snorkel"
+            ],
+            [
+                "superhero"
+            ],
+            [
+                "unicorn"
+            ],
+            [
+                "scarf"
+            ]
+        ]
+    ]
+}
