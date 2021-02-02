@@ -2916,10 +2916,17 @@ true,result:this.OTHER})}if(C3.IsFiniteNumber(property))property=C3.Behaviors.Tw
 		C3.Plugins.Text,
 		C3.Plugins.Button,
 		C3.Plugins.System.Cnds.OnLayoutStart,
-		C3.Plugins.Sprite.Acts.SetAnimFrame,
-		C3.Plugins.System.Exps.random,
-		C3.Plugins.Sprite.Exps.AnimationFrameCount,
 		C3.Plugins.Text.Acts.SetText,
+		C3.Plugins.Arr.Acts.SetSize,
+		C3.Plugins.System.Cnds.Repeat,
+		C3.Plugins.Sprite.Exps.AnimationFrameCount,
+		C3.Plugins.Arr.Acts.Push,
+		C3.Plugins.System.Exps.loopindex,
+		C3.Plugins.System.Acts.SetVar,
+		C3.Plugins.System.Exps.random,
+		C3.Plugins.Arr.Exps.Width,
+		C3.Plugins.Arr.Exps.At,
+		C3.Plugins.Arr.Acts.Delete,
 		C3.Plugins.System.Cnds.CompareBoolVar,
 		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.AJAX.Acts.RequestFile,
@@ -2934,20 +2941,19 @@ true,result:this.OTHER})}if(C3.IsFiniteNumber(property))property=C3.Behaviors.Tw
 		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.Sprite.Acts.MoveToTop,
 		C3.Behaviors.Tween.Acts.TweenTwoProperties,
-		C3.Plugins.Arr.Exps.At,
 		C3.Behaviors.Tween.Acts.TweenOneProperty,
 		C3.Behaviors.Tween.Cnds.OnTweensFinished,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.Sprite.Acts.SetPos,
 		C3.Plugins.System.Cnds.ForEach,
 		C3.Plugins.Sprite.Acts.SetOpacity,
-		C3.Plugins.Arr.Acts.SetSize,
 		C3.Plugins.Arr.Acts.Clear,
 		C3.Plugins.Arr.Acts.SetX,
 		C3.Plugins.Sprite.Exps.AnimationFrame,
 		C3.Plugins.System.Cnds.PickByComparison,
-		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.System.Exps.choose,
+		C3.Plugins.Sprite.Acts.SetAnimFrame,
+		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.Button.Cnds.OnClicked,
 		C3.Plugins.System.Acts.GoToLayout
 		];
@@ -2981,10 +2987,13 @@ true,result:this.OTHER})}if(C3.IsFiniteNumber(property))property=C3.Behaviors.Tw
 		{response_text: 0},
 		{start_text: 0},
 		{Play: 0},
+		{layoutsOrdered: 0},
+		{layoutRandomized: 0},
 		{wrong2: 0},
 		{wrong1: 0},
 		{correctAnswer: 0},
-		{Loaded: 0}
+		{Loaded: 0},
+		{layoutCounter: 0}
 	];
 }
 
@@ -3086,17 +3095,32 @@ true,result:this.OTHER})}if(C3.IsFiniteNumber(property))property=C3.Behaviors.Tw
 	}
 
 	self.C3_ExpressionFuncs = [
+		() => "",
+		() => 0,
+		() => 1,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpObject();
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0();
+		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const n1 = p._GetNode(1);
 			return () => f0(0, n1.ExpObject());
 		},
-		() => "",
-		() => "masklocations",
 		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0();
+			const n0 = p._GetNode(0);
+			const v1 = p._GetNode(1).GetVar();
+			return () => n0.ExpObject(v1.GetValue());
 		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => v0.GetValue();
+		},
+		() => "masklocations",
 		() => "masknames",
 		() => "maskchoices",
 		() => "press",
@@ -3117,9 +3141,7 @@ true,result:this.OTHER})}if(C3.IsFiniteNumber(property))property=C3.Behaviors.Tw
 			const n1 = p._GetNode(1);
 			return () => n0.ExpObject(1, n1.ExpInstVar());
 		},
-		() => 1,
 		() => "mask-fade-out",
-		() => 0,
 		() => 0.5,
 		() => "Not the best choice!",
 		() => 5,
@@ -3127,10 +3149,6 @@ true,result:this.OTHER})}if(C3.IsFiniteNumber(property))property=C3.Behaviors.Tw
 		() => 100,
 		() => "fadeout",
 		() => 3,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => v0.GetValue();
-		},
 		p => {
 			const n0 = p._GetNode(0);
 			const n1 = p._GetNode(1);
