@@ -2954,9 +2954,12 @@ true,result:this.OTHER})}if(C3.IsFiniteNumber(property))property=C3.Behaviors.Tw
 		C3.Plugins.Touch.Cnds.OnTouchObject,
 		C3.Plugins.Sprite.Cnds.OnAnimFinished,
 		C3.Plugins.System.Acts.RestartLayout,
+		C3.Plugins.Sprite.Acts.SetVisible,
 		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.Sprite.Acts.MoveToTop,
 		C3.Behaviors.Tween.Acts.TweenTwoProperties,
+		C3.Plugins.Sprite.Cnds.IsAnimPlaying,
+		C3.Plugins.Sprite.Acts.SetAnimFrame,
 		C3.Behaviors.Tween.Acts.TweenOneProperty,
 		C3.Behaviors.Tween.Cnds.OnTweensFinished,
 		C3.Plugins.System.Acts.Wait,
@@ -2967,8 +2970,9 @@ true,result:this.OTHER})}if(C3.IsFiniteNumber(property))property=C3.Behaviors.Tw
 		C3.Plugins.Arr.Acts.SetX,
 		C3.Plugins.Sprite.Exps.AnimationFrame,
 		C3.Plugins.System.Cnds.PickByComparison,
+		C3.Plugins.Sprite.Exps.X,
+		C3.Plugins.Sprite.Exps.Y,
 		C3.Plugins.System.Exps.choose,
-		C3.Plugins.Sprite.Acts.SetAnimFrame,
 		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.System.Acts.GoToLayout
 		];
@@ -3008,11 +3012,16 @@ true,result:this.OTHER})}if(C3.IsFiniteNumber(property))property=C3.Behaviors.Tw
 		{title: 0},
 		{instruction_text: 0},
 		{Sprite: 0},
+		{yes_helper_text: 0},
+		{no_helper_text: 0},
+		{square: 0},
 		{wrong2: 0},
 		{wrong1: 0},
 		{correctAnswer: 0},
 		{Loaded: 0},
-		{layoutCounter: 0}
+		{layoutCounter: 0},
+		{situationNumber: 0},
+		{movingparts: 0}
 	];
 }
 
@@ -3152,17 +3161,30 @@ true,result:this.OTHER})}if(C3.IsFiniteNumber(property))property=C3.Behaviors.Tw
 		() => "goToSitch",
 		p => {
 			const n0 = p._GetNode(0);
-			const n1 = p._GetNode(1);
-			return () => n0.ExpObject(0, n1.ExpInstVar());
+			const v1 = p._GetNode(1).GetVar();
+			return () => n0.ExpObject(0, v1.GetValue());
 		},
 		p => {
 			const n0 = p._GetNode(0);
-			const n1 = p._GetNode(1);
-			return () => n0.ExpObject(1, n1.ExpInstVar());
+			const v1 = p._GetNode(1).GetVar();
+			return () => n0.ExpObject(1, v1.GetValue());
+		},
+		() => "no_mask",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpInstVar() + 1);
 		},
 		() => "mask-fade-out",
 		() => 0.5,
 		() => "no",
+		() => "Bandana",
+		() => 19,
+		() => "filter",
+		() => 20,
+		() => "scarf",
+		() => 21,
+		() => "n95",
+		() => 22,
 		() => 5,
 		() => "fadein",
 		() => 100,
@@ -3192,6 +3214,15 @@ true,result:this.OTHER})}if(C3.IsFiniteNumber(property))property=C3.Behaviors.Tw
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject(0);
+		},
+		() => "cloth with ties",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 5);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 35);
 		},
 		p => {
 			const n0 = p._GetNode(0);
