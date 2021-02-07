@@ -2964,8 +2964,8 @@ true,result:this.OTHER})}if(C3.IsFiniteNumber(property))property=C3.Behaviors.Tw
 		C3.Behaviors.Tween.Cnds.OnTweensFinished,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.Sprite.Acts.SetPos,
-		C3.Plugins.System.Cnds.ForEach,
 		C3.Plugins.Sprite.Acts.SetOpacity,
+		C3.Plugins.System.Cnds.ForEach,
 		C3.Plugins.Arr.Acts.Clear,
 		C3.Plugins.Arr.Acts.SetX,
 		C3.Plugins.Sprite.Exps.AnimationFrame,
@@ -2974,6 +2974,7 @@ true,result:this.OTHER})}if(C3.IsFiniteNumber(property))property=C3.Behaviors.Tw
 		C3.Plugins.Sprite.Exps.Y,
 		C3.Plugins.System.Exps.choose,
 		C3.Plugins.System.Acts.AddVar,
+		C3.Plugins.Sprite.Cnds.CompareOpacity,
 		C3.Plugins.System.Acts.GoToLayout
 		];
 	};
@@ -3015,6 +3016,7 @@ true,result:this.OTHER})}if(C3.IsFiniteNumber(property))property=C3.Behaviors.Tw
 		{yes_helper_text: 0},
 		{no_helper_text: 0},
 		{square: 0},
+		{nextButton: 0},
 		{wrong2: 0},
 		{wrong1: 0},
 		{correctAnswer: 0},
@@ -3185,11 +3187,11 @@ true,result:this.OTHER})}if(C3.IsFiniteNumber(property))property=C3.Behaviors.Tw
 		() => 21,
 		() => "n95",
 		() => 22,
-		() => 5,
-		() => "fadein",
-		() => 100,
-		() => "fadeout",
 		() => 3,
+		() => "nextfadein",
+		() => 100,
+		() => "fadein",
+		() => "fadeout",
 		p => {
 			const n0 = p._GetNode(0);
 			const n1 = p._GetNode(1);
