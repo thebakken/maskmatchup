@@ -2935,6 +2935,7 @@ true,result:this.OTHER})}if(C3.IsFiniteNumber(property))property=C3.Behaviors.Tw
 		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Plugins.Sprite.Acts.SetAnim,
 		C3.Plugins.Arr.Acts.SetSize,
+		C3.Plugins.System.Acts.SetBoolVar,
 		C3.Plugins.System.Cnds.Repeat,
 		C3.Plugins.Sprite.Exps.AnimationFrameCount,
 		C3.Plugins.Arr.Acts.Push,
@@ -2950,7 +2951,6 @@ true,result:this.OTHER})}if(C3.IsFiniteNumber(property))property=C3.Behaviors.Tw
 		C3.Plugins.AJAX.Cnds.OnComplete,
 		C3.Plugins.Arr.Acts.JSONLoad,
 		C3.Plugins.AJAX.Exps.LastData,
-		C3.Plugins.System.Acts.SetBoolVar,
 		C3.Plugins.Touch.Cnds.OnTouchObject,
 		C3.Plugins.Sprite.Cnds.OnAnimFinished,
 		C3.Plugins.System.Acts.RestartLayout,
@@ -3179,14 +3179,16 @@ true,result:this.OTHER})}if(C3.IsFiniteNumber(property))property=C3.Behaviors.Tw
 		() => "mask-fade-out",
 		() => 0.5,
 		() => "no",
-		() => "Bandana",
-		() => 19,
 		() => "filter",
-		() => 20,
+		() => 18,
 		() => "scarf",
-		() => 21,
+		() => 19,
 		() => "n95",
-		() => 22,
+		() => 6,
+		() => 7,
+		() => 11,
+		() => 14,
+		() => 20,
 		() => 3,
 		() => "nextfadein",
 		() => 100,
@@ -3242,8 +3244,10 @@ true,result:this.OTHER})}if(C3.IsFiniteNumber(property))property=C3.Behaviors.Tw
 		p => {
 			const n0 = p._GetNode(0);
 			const v1 = p._GetNode(1).GetVar();
-			return () => n0.ExpObject((v1.GetValue() % 18));
-		}
+			const n2 = p._GetNode(2);
+			return () => n0.ExpObject((v1.GetValue() % n2.ExpObject()));
+		},
+		() => "wrong-mask-fade-out"
 	];
 }
 

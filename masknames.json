@@ -2,16 +2,13 @@
     "c2array": true,
     "size": [
         1,
-        18,
+        17,
         1
     ],
     "data": [
         [
             [
                 "Astronaut"
-            ],
-            [
-                "Bandana"
             ],
             [
                 "blueSurgical"
